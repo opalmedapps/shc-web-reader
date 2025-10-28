@@ -54,14 +54,14 @@ const systems = {
   "http://snomed.info/sct": {
     "type": "dictionary",
     "url": "codes-snomed-sct.json",
-    "plaecHolder": "..."
+    "placeHolder": "..."
   },
 
   // LOINC
   "http://loinc.org": {
     "type": "dictionary",
     "url": "codes-loinc.json",
-    "plaecHolder": "..."
+    "placeHolder": "..."
   },
 
   // CPT (Docket Snapshot)

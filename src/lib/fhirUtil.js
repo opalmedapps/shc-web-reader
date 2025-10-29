@@ -873,12 +873,12 @@ export function delimiterAppendArray(cur, arr, delim) {
 
 export function currentLocale() {
 
-  // try to prefer a complete locale vs. just a language
   if (navigator.languages && navigator.languages.length) {
-    for (const i in navigator.languages) {
-      const l = navigator.languages[i];
-      if (l.indexOf("-") !== -1) return (l);
-    }
+    // try to prefer a complete locale vs. just a language
+    // for (const i in navigator.languages) {
+    //   const l = navigator.languages[i];
+    //   if (l.indexOf("-") !== -1) return (l);
+    // }
 
     return (navigator.languages[0]);
   }

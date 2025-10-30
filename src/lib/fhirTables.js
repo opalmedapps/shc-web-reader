@@ -108,8 +108,9 @@ const renderConfig = {
 
 /**
  * @param {function} t Translation function obtained from useLanguage(), propagated down from a React component.
+ * @param {string?} language The desired user language, null if the bundle language matches the user language
  */
-export function renderJSX(tableState, className, rmap, dcr, t) {
+export function renderJSX(tableState, className, rmap, dcr, t, language = null) {
 
   const tables = Object.keys(tableState).reduce((acc, rtype) => {
 
@@ -127,7 +128,7 @@ export function renderJSX(tableState, className, rmap, dcr, t) {
     const rows = arr.reduce((rowsAcc, r) => {
 
       if (!r.id || !seen[r.id]) {
-        rowsAcc.push(render.rowFn(r, rmap, dcr));
+        rowsAcc.push(render.rowFn(r, rmap, dcr, language));
         if (r.id) seen[r.id] = true;
       }
 
@@ -167,9 +168,9 @@ function conditionsHeader(t) {
   </tr>);
 }
 
-function conditionsRow(r, rmap, dcr) {
+function conditionsRow(r, rmap, dcr, language = null) {
 
-  const status = (r.clinicalStatus ? futil.renderCodeableJSX(r.clinicalStatus, dcr) : "");
+  const status = (r.clinicalStatus ? futil.renderCodeableJSX(r.clinicalStatus, dcr, language) : "");
   const name = (r.code ? futil.renderCodeableJSX(r.code, dcr) : "");
   const sev = (r.severity ? futil.renderCodeableJSX(r.severity, dcr) : "");
 
@@ -284,11 +285,24 @@ function medReqHeader(t) {
   </tr>);
 }
 
-function medReqRow(r, rmap, dcr) {
+function medReqRow(r, rmap, dcr, language = null) {
 
   // nyi
+  // TODO: How do we translate the enum for MedicationRequest.code
+  // https://www.hl7.org/fhir/codesystem-medicationrequest-status.html
+  // https://www.hl7.org/fhir/valueset-medicationrequest-status.html
+
+  const statusCode = {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ValueSet/medicationrequest-status",
+        "code": r.status,
+      }
+    ]
+  }
+
   return (<tr key={r.id}>
-    <td>{r.status}</td>
+    <td>{futil.renderCodeableJSX(statusCode, dcr, language)}</td>
     <td>{renderMedXNameJSX(r, rmap, dcr)}</td>
     <td>{(r.authoredOn ? futil.renderDateTime(r.authoredOn) : "")}</td>
     <td>{futil.renderDosage(r.dosageInstruction, dcr)}</td>
@@ -435,7 +449,7 @@ function obsHeader(t) {
   </tr>);
 }
 
-function obsRow(r, rmap, dcr) {
+function obsRow(r, rmap, dcr, language = null) {
 
   // observations may have compound results, which we treat as
   // multiple distinct observations ... not ideal but it works ok.
@@ -444,7 +458,7 @@ function obsRow(r, rmap, dcr) {
 
   const rows = [];
 
-  const outerName = (r.code ? futil.renderCodeableJSX(r.code, dcr) : "");
+  const outerName = (r.code ? futil.renderCodeableJSX(r.code, dcr, language) : r.code);
   const outerValue = futil.renderCrazyValue(r, "value", dcr);
 
   if (outerValue || r.dataAbsentReason) {
@@ -454,7 +468,7 @@ function obsRow(r, rmap, dcr) {
   if (r.component && r.component.length) {
     for (const i in r.component) {
       const c = r.component[i];
-      const compName = (c.code ? futil.renderCodeableJSX(c.code, dcr) : "");
+      const compName = (c.code ? futil.renderCodeableJSX(c.code, dcr, language) : c.code);
       if (compName !== outerName) {
 
         const compValue = futil.renderCrazyValue(c, "value", dcr);

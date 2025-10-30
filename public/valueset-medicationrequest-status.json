@@ -1,0 +1,12 @@
+{
+  "__source": "https://hl7.org/fhir/valueset-medicationrequest-status.html",
+  "active": "Active",
+  "on-hold": "On Hold",
+  "ended": "Ended",
+  "stopped": "Stopped",
+  "completed": "Completed",
+  "cancelled": "Cancelled",
+  "entered-in-error": "Entered In Error",
+  "draft": "Draft",
+  "unknown": "Unknown"
+}

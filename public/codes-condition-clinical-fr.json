@@ -1,0 +1,10 @@
+{
+    "__source": "https://fhir.infoway-inforoute.ca/ValueSet/conditionclinicalstatuscodes",
+    "active": "Actif",
+    "recurrence": "Récidive",
+    "relapse": "Rechute",
+    "inactive": "Inactif",
+    "remission": "Rémission",
+    "resolved": "Résolu",
+    "unknown": "Inconnu"
+}

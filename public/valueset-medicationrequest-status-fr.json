@@ -1,0 +1,11 @@
+{
+  "active": "Actif",
+  "on-hold": "En attente",
+  "ended": "Terminé",
+  "stopped": "Interrompu",
+  "completed": "Complété",
+  "cancelled": "Annulé",
+  "entered-in-error": "Enregistré par erreur",
+  "draft": "Brouillon",
+  "unknown": "Inconnu"
+}

@@ -99,8 +99,10 @@ export default function PatientSummarySection({ s, rmap, dcr }) {
    */
   const renderStructured = (t) => {
     const tableState = {};
-    for (const i in s.entry) ftabs.addResource(rmap[s.entry[i].reference], tableState, rmap);
-    return (ftabs.renderJSX(tableState, styles.fhirTable, rmap, dcr, t));
+    for (const i in s.entry) {
+      ftabs.addResource(rmap[s.entry[i].reference], tableState, rmap);
+    }
+    return (ftabs.renderJSX(tableState, styles.fhirTable, rmap, dcr, t, currentLanguage));
   }
 
   // +-------------+

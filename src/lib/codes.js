@@ -23,6 +23,28 @@ const systems = {
 	"url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-coverage-class.json"
   },
 
+  "http://terminology.hl7.org/CodeSystem/condition-clinical": {
+    "url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-condition-clinical.json"
+  },
+
+  "http://terminology.hl7.org/CodeSystem/condition-clinical-fr": {
+    "type": "dictionary",
+    "url": "codesystem-condition-clinical-fr.json"
+  },
+
+  // Source: https://hl7.org/fhir/valueset-medicationrequest-status.html
+  // JSON file does not contain concepts for some reason.
+  // And, can also not load JSON file directly due to CORS request being blocked (missing Access-Control-Allow-Origin header)
+  "http://hl7.org/fhir/ValueSet/medicationrequest-status": {
+    "type": "dictionary",
+    "url": "valueset-medicationrequest-status.json"
+  },
+
+  "http://hl7.org/fhir/ValueSet/medicationrequest-status-fr": {
+    "type": "dictionary",
+    "url": "valueset-medicationrequest-status-fr.json"
+  },
+
   // copay 
   "http://terminology.hl7.org/CodeSystem/coverage-copay-type": {
 	"url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-coverage-copay-type.json"
@@ -132,8 +154,15 @@ export function getDeferringCodeRenderer() {
 	return(disp);
   };
 
-  obj.safeCodingDisplay = function(c) {
-	return(c.display || this.safeCodeDisplay(c.system, c.code));
+  obj.safeCodingDisplay = function (c, language = null) {
+    // Previous behaviour favouring display
+    if (!language) {
+      return (c.display || this.safeCodeDisplay(c.system, c.code));
+    }
+
+    // 
+    const languageSystem = (language === 'en') ? c.system : `${c.system}-${language}`;
+    return (this.safeCodeDisplay(languageSystem, c.code) || c.code);
   }
 
   obj.awaitDeferred = async function() {
@@ -165,6 +194,7 @@ function safeDisplaySync(system, code) {
   }
 
   const loadable = systemLoadable(system);
+  console.log(loadable);
   const placeHolder = (loadable ? (systems[system].placeHolder || code) : code);
   return([ placeHolder, loadable ]);
 }

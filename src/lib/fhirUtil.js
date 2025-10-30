@@ -639,7 +639,7 @@ export function renderCodeable(c, dcr) {
   return(dcr.safeCodingDisplay(c.coding[0]));
 }
 
-export function renderCodeableJSX(c, dcr) {
+export function renderCodeableJSX(c, dcr, language = null) {
 
   if (!c) return(undefined);
   
@@ -655,7 +655,7 @@ export function renderCodeableJSX(c, dcr) {
   // if no text, use the first code we find as base text
   let iFirstAlt = 0;
   if (!disp && c.coding && c.coding.length > 0) {
-	disp = dcr.safeCodingDisplay(c.coding[0]);
+	disp = dcr.safeCodingDisplay(c.coding[0], language);
 	iFirstAlt = 1;
   }
 
@@ -666,7 +666,7 @@ export function renderCodeableJSX(c, dcr) {
   let alt = "";
   for (let i = iFirstAlt; i < c.coding.length; ++i) {
 	if (alt.length > 0) alt += "\n";
-	alt += dcr.safeCodingDisplay(c.coding[i]);
+	alt += dcr.safeCodingDisplay(c.coding[i], language);
   }
 
   return(<span className="xtrahover" title={alt}>{disp}</span>);

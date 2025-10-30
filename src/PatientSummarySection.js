@@ -15,7 +15,7 @@ export default function PatientSummarySection({ s, rmap, dcr }) {
   const NTOGGLE = "narrative_toggle";
   const STOGGLE = "structured_toggle";
 
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
   const [ viewState, setViewState ] = useState(undefined);
 
   // +---------------------+
@@ -100,7 +100,7 @@ export default function PatientSummarySection({ s, rmap, dcr }) {
   const renderStructured = (t) => {
 	const tableState = {};
 	for (const i in s.entry) ftabs.addResource(rmap[s.entry[i].reference], tableState, rmap);
-	return(ftabs.renderJSX(tableState, styles.fhirTable, rmap, dcr, t));
+	return(ftabs.renderJSX(tableState, styles.fhirTable, rmap, dcr, t, currentLanguage));
   }
 
   // +-------------+

@@ -1,0 +1,6 @@
+{
+  "__source": "https://www.hl7.org/fhir/valueset-allergy-intolerance-criticality.html",
+  "low": "Low Risk",
+  "high": "High Risk",
+  "unable-to-assess": "Unable to Assess Risk"
+}

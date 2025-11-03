@@ -414,9 +414,22 @@ function immunizationHeader(t) {
   </tr>);
 }
 
-function immunizationRow(r, rmap, dcr) {
+/**
+ * @param {string?} language The desired user language, null if the bundle language matches the user language
+ */
+function immunizationRow(r, rmap, dcr, language) {
 
-  const status = r.status + (r.statusReason ? "; " + futil.renderCodeableJSX(r.statusReason, dcr) : "");
+  const statusCode = {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ValueSet/immunization-status",
+        "code": r.status,
+      }
+    ]
+  }
+
+  const status = futil.renderCodeableJSX(statusCode, dcr, language)
+      + (r.statusReason ? "; " + futil.renderCodeableJSX(r.statusReason, dcr) : "");
   const name = futil.renderCodeableJSX(r.vaccineCode, dcr);
   const administered = futil.renderCrazyDateTime(r, "occurrence");
 

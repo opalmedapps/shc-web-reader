@@ -1,0 +1,6 @@
+{
+  "__source": "https://www.hl7.org/fhir/valueset-immunization-status.html",
+  "completed": "Completed",
+  "entered-in-error": "Entered in Error",
+  "not-done": "Not Done"
+}

@@ -67,6 +67,17 @@ const systems = {
     "url": "valueset-allergy-intolerance-criticality-fr.json"
   },
 
+  // Source: https://www.hl7.org/fhir/valueset-immunization-status.html
+  "http://hl7.org/fhir/ValueSet/immunization-status": {
+    "type": "dictionary",
+    "url": "valueset-immunization-status.json"
+  },
+
+  "http://hl7.org/fhir/ValueSet/immunization-status-fr": {
+    "type": "dictionary",
+    "url": "valueset-immunization-status-fr.json"
+  },
+
   // copay 
   "http://terminology.hl7.org/CodeSystem/coverage-copay-type": {
 	"url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-coverage-copay-type.json"

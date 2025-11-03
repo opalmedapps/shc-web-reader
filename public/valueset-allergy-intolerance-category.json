@@ -1,0 +1,7 @@
+{
+  "__source": "https://www.hl7.org/fhir/valueset-allergy-intolerance-category.html",
+  "food": "Food",
+  "medication": "Medication",
+  "environment": "Environment",
+  "biologic": "Biologic"
+}

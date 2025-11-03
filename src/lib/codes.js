@@ -45,6 +45,17 @@ const systems = {
     "url": "valueset-medicationrequest-status-fr.json"
   },
 
+  // Source: https://www.hl7.org/fhir/valueset-allergy-intolerance-category.html
+  "http://hl7.org/fhir/ValueSet/allergy-intolerance-category": {
+    "type": "dictionary",
+    "url": "valueset-allergy-intolerance-category.json"
+  },
+
+  "http://hl7.org/fhir/ValueSet/allergy-intolerance-category-fr": {
+    "type": "dictionary",
+    "url": "valueset-allergy-intolerance-category-fr.json"
+  },
+
   // copay 
   "http://terminology.hl7.org/CodeSystem/coverage-copay-type": {
     "url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-coverage-copay-type.json"

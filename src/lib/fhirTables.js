@@ -354,12 +354,30 @@ function allergyHeader(t) {
   </tr>);
 }
 
-function allergyRow(r, rmap, dcr) {
+/**
+ * @param {string?} language The desired user language, null if the bundle language matches the user language
+ */
+function allergyRow(r, rmap, dcr, language) {
+
+  const categoryCode = category => {
+    return {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/ValueSet/allergy-intolerance-category",
+          "code": category,
+        }
+      ]
+    }
+  }
 
   const status = (r.clinicalStatus ? futil.renderCodeableJSX(r.clinicalStatus, dcr) : "");
   const name = (r.code ? futil.renderCodeableJSX(r.code, dcr) : "");
-  const category = (r.category ? r.category.join("; ") : "");
   const crit = (r.criticality ? r.criticality : "");
+
+  let category;
+  if (Array.isArray(r.category)) category = r.category.map(category => futil.renderCodeableJSX(categoryCode(category), dcr, language)).join('; ');
+  else if (r.category) category = futil.renderCodeableJSX(categoryCode(r.category), dcr, language);
+  else category = '';
 
   return (<tr key={r.id}>
     <td>{status}</td>

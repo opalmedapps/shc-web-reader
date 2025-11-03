@@ -367,9 +367,18 @@ function allergyRow(r, rmap, dcr, language = null) {
     }
   }
 
+  const criticalityCode = {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality",
+        "code": r.criticality,
+      }
+    ]
+  }
+
   const status = (r.clinicalStatus ? futil.renderCodeableJSX(r.clinicalStatus, dcr) : "");
   const name = (r.code ? futil.renderCodeableJSX(r.code, dcr) : "");
-  const crit = (r.criticality ? r.criticality : "");
+  const criticality = (r.criticality ? futil.renderCodeableJSX(criticalityCode, dcr, language) : '');
   
   let category;
   if (Array.isArray(r.category)) category = r.category.map(category => futil.renderCodeableJSX(categoryCode(category), dcr, language)).join('; ');
@@ -380,7 +389,7 @@ function allergyRow(r, rmap, dcr, language = null) {
 		   <td>{status}</td>
 		   <td>{name}</td>
 		   <td>{category}</td>
-		   <td>{crit}</td>
+		   <td>{criticality}</td>
 		   <td>{ futil.renderCrazyDateTime(r, "onset") }</td>
 		 </tr>);
 }

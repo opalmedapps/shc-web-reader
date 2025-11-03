@@ -56,6 +56,17 @@ const systems = {
     "url": "valueset-allergy-intolerance-category-fr.json"
   },
 
+  // Source: https://www.hl7.org/fhir/valueset-allergy-intolerance-criticality.html
+  "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality": {
+    "type": "dictionary",
+    "url": "valueset-allergy-intolerance-criticality.json"
+  },
+
+  "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality-fr": {
+    "type": "dictionary",
+    "url": "valueset-allergy-intolerance-criticality-fr.json"
+  },
+
   // copay 
   "http://terminology.hl7.org/CodeSystem/coverage-copay-type": {
 	"url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-coverage-copay-type.json"

@@ -15,7 +15,7 @@ export default function PatientSummarySection({ s, rmap, dcr }) {
   const NTOGGLE = "narrative_toggle";
   const STOGGLE = "structured_toggle";
 
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
   const [viewState, setViewState] = useState(undefined);
 
   // +---------------------+

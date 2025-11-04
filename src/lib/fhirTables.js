@@ -379,7 +379,7 @@ function allergyRow(r, rmap, dcr, language) {
     ]
   }
 
-  const status = (r.clinicalStatus ? futil.renderCodeableJSX(r.clinicalStatus, dcr) : "");
+  const status = (r.clinicalStatus ? futil.renderCodeableJSX(r.clinicalStatus, dcr, language) : "");
   const name = (r.code ? futil.renderCodeableJSX(r.code, dcr) : "");
 
   let category;

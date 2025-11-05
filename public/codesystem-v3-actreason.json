@@ -1,0 +1,11 @@
+{
+  "__source": "Partial code system; http://terminology.hl7.org/CodeSystem/v3-ActReason",
+  "IMMUNE": "immunity",
+  "MEDPREC": "medical precaution",
+  "OSTOCK": "product out of stock",
+  "PATOBJ": "patient objection",
+  "PHILISOP": "philosophical objection",
+  "RELIG": "religious objection",
+  "VACEFF": "vaccine efficacy concerns",
+  "VACSAF": "vaccine safety concerns"
+}

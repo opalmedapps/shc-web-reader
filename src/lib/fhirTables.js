@@ -429,7 +429,7 @@ function immunizationRow(r, rmap, dcr, language) {
   }
 
   const status = futil.renderCodeableJSX(statusCode, dcr, language)
-      + (r.statusReason ? "; " + futil.renderCodeableJSX(r.statusReason, dcr) : "");
+      + (r.statusReason ? "; " + futil.renderCodeableJSX(r.statusReason, dcr, language) : "");
   const name = futil.renderCodeableJSX(r.vaccineCode, dcr);
   const administered = futil.renderCrazyDateTime(r, "occurrence");
 

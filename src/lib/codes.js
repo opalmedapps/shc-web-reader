@@ -90,6 +90,18 @@ const systems = {
     "url": "valueset-immunization-status-fr.json"
   },
 
+  // For Immunization.statusReason, serves as a superset of: http://hl7.org/fhir/ValueSet/immunization-status-reason
+  // Source: http://terminology.hl7.org/CodeSystem/v3-ActReason
+  "http://terminology.hl7.org/CodeSystem/v3-ActReason": {
+    "type": "dictionary",
+    "url": "codesystem-v3-actreason.json"
+  },
+
+  "http://terminology.hl7.org/CodeSystem/v3-ActReason-fr": {
+    "type": "dictionary",
+    "url": "codesystem-v3-actreason-fr.json"
+  },
+
   // DataAbsentReason
   "http://terminology.hl7.org/CodeSystem/data-absent-reason": {
     "url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-data-absent-reason.json"

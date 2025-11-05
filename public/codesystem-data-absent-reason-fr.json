@@ -1,0 +1,18 @@
+{
+    "__source": "Custom translation",
+    "unknown": "Inconnu",
+    "asked-unknown": "Demandé mais inconnu",
+    "temp-unknown": "Temporairement inconnu",
+    "not-asked": "Non demandé",
+    "asked-declined": "Demandé mais refusé",
+    "masked": "Masqué",
+    "not-applicable": "Non applicable",
+    "unsupported": "Non supporté",
+    "as-text": "Texte",
+    "error": "Erreur",
+    "not-a-number": "Pas un nombre (NaN)",
+    "negative-infinity": "Infini négatif (NINF)",
+    "positive-infinity": "Infini positif (PINF)",
+    "not-performed": "Non effectué",
+    "not-permitted": "Non autorisé"
+}

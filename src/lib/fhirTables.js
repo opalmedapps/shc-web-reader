@@ -503,7 +503,7 @@ function obsRow(r, rmap, dcr, language = null) {
   const outerValue = futil.renderCrazyValue(r, "value", dcr);
 
   if (outerValue || r.dataAbsentReason) {
-    pushObsRow(effective, outerName, outerValue, r, rows, dcr);
+    pushObsRow(effective, outerName, outerValue, r, rows, dcr, language);
   }
 
   if (r.component && r.component.length) {
@@ -514,7 +514,7 @@ function obsRow(r, rmap, dcr, language = null) {
 
         const compValue = futil.renderCrazyValue(c, "value", dcr);
         if (compValue || c.dataAbsentReason) {
-          pushObsRow(effective, compName, compValue, c, rows, dcr);
+          pushObsRow(effective, compName, compValue, c, rows, dcr, language);
         }
       }
 
@@ -524,10 +524,10 @@ function obsRow(r, rmap, dcr, language = null) {
   return (rows);
 }
 
-function pushObsRow(effective, name, value, obj, rows, dcr) {
+function pushObsRow(effective, name, value, obj, rows, dcr, language = null) {
 
   const realValue = (value ? value
-    : futil.renderCodeableJSX(obj.dataAbsentReason, dcr));
+    : futil.renderCodeableJSX(obj.dataAbsentReason, dcr, language));
 
   let flag = undefined;
   if (obj.interpretation && obj.interpretation.length) {

@@ -90,6 +90,16 @@ const systems = {
     "url": "valueset-immunization-status-fr.json"
   },
 
+  // DataAbsentReason
+  "http://terminology.hl7.org/CodeSystem/data-absent-reason": {
+    "url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-data-absent-reason.json"
+  },
+
+  "http://terminology.hl7.org/CodeSystem/data-absent-reason-fr": {
+    "type": "dictionary",
+    "url": "codesystem-data-absent-reason-fr.json"
+  },
+
   // copay 
   "http://terminology.hl7.org/CodeSystem/coverage-copay-type": {
     "url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-coverage-copay-type.json"

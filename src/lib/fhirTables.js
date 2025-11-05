@@ -523,7 +523,7 @@ function obsRow(r, rmap, dcr, language = null) {
 function pushObsRow(effective, name, value, obj, rows, dcr, language = null) {
 
   const realValue = (value ? value
-					 : futil.renderCodeableJSX(obj.dataAbsentReason, dcr, language));
+    : `? (${futil.renderCodeableJSX(obj.dataAbsentReason, dcr, language)})`);
 
   let flag = undefined;
   if (obj.interpretation && obj.interpretation.length) {

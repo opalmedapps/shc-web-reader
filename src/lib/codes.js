@@ -67,7 +67,12 @@ const systems = {
     "url": "valueset-allergy-intolerance-criticality-fr.json"
   },
 
-  // Based on: https://terminology.hl7.org/6.5.0/CodeSystem-allergyintolerance-clinical.html
+  // Source: https://terminology.hl7.org/6.5.0/CodeSystem-allergyintolerance-clinical.html
+  "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical": {
+    "type": "dictionary",
+    "url": "codesystem-allergyintolerance-clinical.json"
+  },
+
   "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical-fr": {
     "type": "dictionary",
     "url": "codesystem-allergyintolerance-clinical-fr.json"

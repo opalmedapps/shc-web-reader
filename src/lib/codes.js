@@ -131,6 +131,11 @@ const systems = {
     "placeHolder": "..."
   },
 
+  "http://loinc.org-fr": {
+    "type": "dictionary",
+    "url": "codes-loinc-fr.json",
+  },
+
   // CPT (Docket Snapshot)
   "http://www.ama-assn.org/go/cpt": {
 	"type": "docket-cpt",
@@ -205,9 +210,10 @@ export function getDeferringCodeRenderer() {
       return (c.display || this.safeCodeDisplay(c.system, c.code));
     }
 
-    // 
+    // Append language to system for non-English language
+    // to allow for language-specific displays.
     const languageSystem = (language === 'en') ? c.system : `${c.system}-${language}`;
-    return (this.safeCodeDisplay(languageSystem, c.code) || c.code);
+    return (this.safeCodeDisplay(languageSystem, c.code) || c.display || c.code);
   }
 
   obj.awaitDeferred = async function() {
@@ -295,9 +301,9 @@ export async function getSystem(system) {
 	return(_loadedSystems[system]);
   }
   catch (err) {
-	console.error(err.toString());
-	_failedSystems[system] = true;
-	return(undefined);
+    console.error(`Error loading system ${system}: ${err.toString()}`);
+    _failedSystems[system] = true;
+    return (undefined);
   }
 }
 

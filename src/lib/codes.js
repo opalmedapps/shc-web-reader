@@ -125,6 +125,11 @@ const systems = {
     "placeHolder": "..."
   },
 
+  "http://loinc.org-fr": {
+    "type": "dictionary",
+    "url": "codes-loinc-fr.json",
+  },
+
   // CPT (Docket Snapshot)
   "http://www.ama-assn.org/go/cpt": {
     "type": "docket-cpt",

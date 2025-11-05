@@ -23,6 +23,7 @@ const systems = {
     "url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-coverage-class.json"
   },
 
+  // Condition.clinicalStatus
   "http://terminology.hl7.org/CodeSystem/condition-clinical": {
     "url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-condition-clinical.json"
   },
@@ -67,10 +68,10 @@ const systems = {
     "url": "valueset-allergy-intolerance-criticality-fr.json"
   },
 
+  // AllergyIntolerance.clinicalStatus
   // Source: https://terminology.hl7.org/6.5.0/CodeSystem-allergyintolerance-clinical.html
   "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical": {
-    "type": "dictionary",
-    "url": "codesystem-allergyintolerance-clinical.json"
+    "url": "https://build.fhir.org/ig/HL7/UTG/CodeSystem-allergyintolerance-clinical.json"
   },
 
   "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical-fr": {

@@ -233,14 +233,14 @@ export async function safeDisplay(system, code) {
 }
 
 function safeDisplaySync(system, code) {
-
+  // Don't fall back to code here if the system is not loaded or does not have the code.
+  // Instead, let the caller decide what to do (e.g., use coding.display).
   if (systemLoaded(system) || getSystemLocal(system)) {
-	return([ _loadedSystems[system][code] || code, false ]);
+	return([ _loadedSystems[system][code], false ]);
   }
 
   const loadable = systemLoadable(system);
-  console.log(loadable);
-  const placeHolder = (loadable ? (systems[system].placeHolder || code) : code);
+  const placeHolder = (loadable ? (systems[system].placeHolder || code) : undefined);
   return([ placeHolder, loadable ]);
 }
 
@@ -255,7 +255,15 @@ const _loadedSystems = {};
 const _failedSystems = {};
 
 function systemLoadable(system) {
-  return(systemLoaded(system) || (systems[system] && !_failedSystems[system]));
+  const loadable = systemLoaded(system) || (systems[system] && !_failedSystems[system]);
+
+  // Only report the error once
+  if (!loadable && !_failedSystems[system]) {
+    console.error(`system ${system} not loadable`);
+    _failedSystems[system] = true;
+  }
+
+  return loadable;
 }
 
 function systemLoaded(system) {

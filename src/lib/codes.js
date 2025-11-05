@@ -210,9 +210,10 @@ export function getDeferringCodeRenderer() {
       return (c.display || this.safeCodeDisplay(c.system, c.code));
     }
 
-    // 
+    // Append language to system for non-English language
+    // to allow for language-specific displays.
     const languageSystem = (language === 'en') ? c.system : `${c.system}-${language}`;
-    return (this.safeCodeDisplay(languageSystem, c.code, language) || c.code);
+    return (this.safeCodeDisplay(languageSystem, c.code, language) || c.display || c.code);
   }
 
   obj.awaitDeferred = async function () {
@@ -300,7 +301,7 @@ export async function getSystem(system) {
     return (_loadedSystems[system]);
   }
   catch (err) {
-    console.error(err.toString());
+    console.error(`Error loading system ${system}: ${err.toString()}`);
     _failedSystems[system] = true;
     return (undefined);
   }

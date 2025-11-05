@@ -1,0 +1,11 @@
+{
+  "__source": "Partial code system; custom translation",
+  "IMMUNE": "immunité",
+  "MEDPREC": "précaution médicale",
+  "OSTOCK": "produit en rupture de stock",
+  "PATOBJ": "objection du patient",
+  "PHILISOP": "objection philosophique",
+  "RELIG": "objection religieuse",
+  "VACEFF": "inquiétudes sur l'efficacité vaccinale",
+  "VACSAF": "inquiétudes sur la sécurité vaccinale"
+}

@@ -376,10 +376,10 @@ export function parseCrazyDateTimeBestGuess(parent, prefix) {
 //       valueAttachment (NOT SUPPORTED)
 //       valueReference(MolecularSequence) (NOT SUPPORTED)
 
-export function renderCrazyValue(parent, prefix, dcr, language = 'en') {
+export function renderCrazyValue(parent, prefix, dcr) {
 
   if (parent[prefix + "Quantity"]) return (renderQuantity(parent[prefix + "Quantity"]));
-  if (parent[prefix + "CodeableConcept"]) return (renderCodeableJSX(parent[prefix + "CodeableConcept"], dcr, language));
+  if (parent[prefix + "CodeableConcept"]) return (renderCodeableJSX(parent[prefix + "CodeableConcept"], dcr));
   if (parent[prefix + "String"]) return (parent[prefix + "String"]);
   if (parent[prefix + "Boolean"]) return (parent[prefix + "Boolean"]);
   if (parent[prefix + "Integer"]) return (parent[prefix + "Integer"]);

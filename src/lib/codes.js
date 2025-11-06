@@ -30,7 +30,7 @@ const systems = {
 
   "http://terminology.hl7.org/CodeSystem/condition-clinical-fr": {
     "type": "dictionary",
-    "url": "codes-condition-clinical-fr.json"
+    "url": "codesystem-condition-clinical-fr.json"
   },
 
   // Source: https://hl7.org/fhir/valueset-medicationrequest-status.html

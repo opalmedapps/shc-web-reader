@@ -158,6 +158,19 @@ const systems = {
     "url": "codes-loinc-fr.json",
   },
 
+  // ICD-10-CM and CIM-10 (French Version)
+  // Source: https://www.cdc.gov/nchs/icd/icd-10-cm/files.html
+  "2.16.840.1.113883.6.90": {
+    "type": "dictionary",
+    "url": "codes-icd10cm.json",
+  },
+
+  // Source: https://smt.esante.gouv.fr/terminologie-cim-10/
+  "2.16.840.1.113883.6.90-fr": {
+    "type": "dictionary",
+    "url": "codes-icd10-fr.json",
+  },
+
   // CPT (Docket Snapshot)
   "http://www.ama-assn.org/go/cpt": {
 	"type": "docket-cpt",

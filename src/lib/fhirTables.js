@@ -171,7 +171,7 @@ function conditionsHeader(t) {
 function conditionsRow(r, rmap, dcr, language = null) {
 
   const status = (r.clinicalStatus ? futil.renderCodeableJSX(r.clinicalStatus, dcr, language) : "");
-  const name = (r.code ? futil.renderCodeableJSX(r.code, dcr) : "");
+  const name = (r.code ? futil.renderCodeableJSX(r.code, dcr, language) : "");
   const sev = (r.severity ? futil.renderCodeableJSX(r.severity, dcr) : "");
 
   return (<tr key={r.id}>

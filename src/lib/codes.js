@@ -163,12 +163,14 @@ const systems = {
   "2.16.840.1.113883.6.90": {
     "type": "dictionary",
     "url": "codes-icd10cm.json",
+    "placeHolder": "..."
   },
 
   // Source: https://smt.esante.gouv.fr/terminologie-cim-10/
   "2.16.840.1.113883.6.90-fr": {
     "type": "dictionary",
     "url": "codes-icd10-fr.json",
+    "placeHolder": "..."
   },
 
   // CPT (Docket Snapshot)

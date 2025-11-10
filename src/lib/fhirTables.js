@@ -168,15 +168,60 @@ function conditionsHeader(t) {
 		 </tr>);
 }
 
+function getParentCode(code) {
+  const lastDotIndex = code.lastIndexOf('.');
+  const lastIndex = code.length - 1;
+  return lastDotIndex > 0 && lastIndex > lastDotIndex + 1 ? code.substring(0, lastIndex) : null;
+}
+
+function getParentCodeDisplay(system, code, dcr) {
+  let currentCode = getParentCode(code);
+  while (currentCode) {
+    const display = dcr.safeCodeDisplay(system, currentCode);
+    console.log(display);
+    if (display) return [currentCode, display];
+    currentCode = getParentCode(currentCode);
+  }
+  return null;
+}
+
 function conditionsRow(r, rmap, dcr, language = null) {
 
   const status = (r.clinicalStatus ? futil.renderCodeableJSX(r.clinicalStatus, dcr, language) : "");
-  const name = (r.code ? futil.renderCodeableJSX(r.code, dcr, language) : "");
+
+  // For condition codes, use special handling to show parent French + English detail
+  let nameParts = [];
+  if (r.code) {
+    const firstCoding = r.code.coding[0];
+    nameParts.push(<b>{firstCoding.code}: </b>);
+
+    if (language === 'fr') {
+      const frenchName = dcr.safeCodeDisplay(`${firstCoding.system}-fr`, firstCoding.code);
+
+      if (frenchName) {
+        nameParts.push(frenchName);
+      } else {
+        // Fallback to English if French translation is missing
+        nameParts.push(futil.renderCodeableJSX(r.code, dcr, language));
+      }
+
+
+      const parentFrenchName = getParentCodeDisplay(`${firstCoding.system}-fr`, firstCoding.code, dcr);
+      if (parentFrenchName) {
+        nameParts.push(<br />);
+        nameParts.push(`(${parentFrenchName[0]}: ${parentFrenchName[1]})`);
+      }
+    } 
+    else {
+      nameParts.push(futil.renderCodeableJSX(r.code, dcr, language));
+    }
+  }
+
   const sev = (r.severity ? futil.renderCodeableJSX(r.severity, dcr) : "");
 
   return(<tr key={r.id}>
 		   <td>{status}</td>
-		   <td>{name}</td>
+		   <td>{nameParts}</td>
 		   <td>{sev}</td>
 		   <td>{ futil.renderCrazyDateTime(r, "onset") }</td>
 		   <td>{ futil.renderCrazyDateTime(r, "abatement") }</td>
